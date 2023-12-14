@@ -1,0 +1,8 @@
+fastapi
+pydantic
+uvicorn[standard]
+python-multipart
+pyrebase4
+firebase-admin
+google-cloud-storage
+google-cloud-secret-manager
