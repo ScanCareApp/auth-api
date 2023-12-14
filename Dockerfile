@@ -1,4 +1,4 @@
-#masi kopas dari repo sebelah hehehe 
+
 FROM python:3.10.3-slim-buster
 
 WORKDIR /workspace
