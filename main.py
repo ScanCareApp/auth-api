@@ -23,7 +23,7 @@ def access_secret_version(project_id, secret_id, version_id):
     return json.loads(payload)
 
 app: FastAPI = FastAPI(
-    description="baaa",
+    description="User Auth & User Profile",
     title="Firebase Auth"
 )
 import firebase_admin
