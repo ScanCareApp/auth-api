@@ -18,7 +18,7 @@ This API manages user authentication and profile information storage using Fireb
    - [Authenticate to Secret Manager Locally](#authenticate-to-secret-manager-locally)
 4. [Running the Application Locally](#running-the-application-locally)
    - [Documentation and Testing](#documentation-and-testing)
-5. [Deployment](#deployment)
+5. [Deploying the Application to Cloud Run](#deploying the Application to Cloud Run)
 
 ## Endpoint Description
 ### Create Account (`POST /signup`)
@@ -276,4 +276,25 @@ Please note that this method is less secure and not recommended for production e
 - View Swagger UI: `http://localhost:8000/docs` on your browser
 
 
-## Deployment
+## Deploying the Application to Cloud Run
+```bash
+# Create a Docker Artifact Repository in a specified region
+gcloud artifacts repositories create YOUR_REPOSITORY_NAME --repository-format=docker --location=YOUR_REGION
+
+# Build Docker image for the ML API
+docker buildx build --platform linux/amd64 -t YOUR_IMAGE_PATH:YOUR_TAG --build-arg PORT=8080 .
+
+# Push the Docker image to the Artifact Repository
+docker push YOUR_IMAGE_PATH:YOUR_TAG
+
+# Deploy the Docker image to Cloud Run with allocated memory
+gcloud run deploy --image YOUR_IMAGE_PATH:YOUR_TAG --memory 3Gi
+
+# Fetching the service account associated with the newly deployed Cloud Run service
+SERVICE_ACCOUNT=$(gcloud run services describe YOUR_SERVICE_NAME --platform=managed --region=YOUR_REGION --format="value(serviceAccountEmail)")
+
+# Grant necessary IAM roles to the service account linked to the Cloud Run service
+gcloud projects add-iam-policy-binding YOUR_PROJECT_ID --member=serviceAccount:${SERVICE_ACCOUNT} --role=roles/secretmanager.secretAccessor
+
+gcloud projects add-iam-policy-binding YOUR_PROJECT_ID --member=serviceAccount:${SERVICE_ACCOUNT} --role=roles/cloudsql.client
+```
