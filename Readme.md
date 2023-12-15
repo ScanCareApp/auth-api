@@ -265,7 +265,7 @@ Please note that this method is less secure and not recommended for production e
      ```python
      key = access_secret_version('YOUR_PROJECT_ID', 'scancare-user-profile_bucket_sak','1')
      ```
-   - Update 'YOUR_PROJECT_ID' with your Google Cloud project ID.
+   - Update `YOUR_PROJECT_ID` with your Google Cloud project ID.
 
 6. **Running the FastAPI Application**
     - Update the run configuration in `main.py`:
