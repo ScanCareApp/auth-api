@@ -253,7 +253,21 @@ Please note that this method is less secure and not recommended for production e
     pip install -r requirements.txt
     ```
 
-3. **Running the FastAPI Application**
+3. **Modifying Access to Secret Manager**
+   - Navigate to `main.py`.
+   - Find these sections:
+     ```python
+     firebaseSak = access_secret_version('YOUR_PROJECT_ID', 'firebase_sak','1')
+     ```
+     ```python
+     firebaseConfig = access_secret_version('YOUR_PROJECT_ID', 'firebase_config','1')
+     ```
+     ```python
+     key = access_secret_version('YOUR_PROJECT_ID', 'scancare-user-profile_bucket_sak','1')
+     ```
+   - Update 'YOUR_PROJECT_ID' with your Google Cloud project ID.
+
+6. **Running the FastAPI Application**
     - Update the run configuration in `main.py`:
       
         ```python
@@ -262,12 +276,12 @@ Please note that this method is less secure and not recommended for production e
         uvicorn.run(app, host='localhost', port=port) 
         ```
         
-4. **Starting the Local Server**
+7. **Starting the Local Server**
     ```bash
     uvicorn main:app --reload
     ```
 
-5. **Accessing the API**
+8. **Accessing the API**
     - Utilize the provided API endpoints as documented earlier.
 
 ---
