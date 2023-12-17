@@ -5,7 +5,7 @@ import uvicorn
 import pyrebase
 import json
 from fastapi import FastAPI
-from models import LoginSchema, SignUpSchema #UserProfileSchema
+from models import LoginSchema, SignUpSchema
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import HTTPException
 from fastapi.requests import Request
@@ -108,17 +108,6 @@ async def create_access_token(user_data: LoginSchema):
             status_code=400, detail="invalid"
         )
 
-
-@app.post('/ping')
-async def validate_token(request: Request):
-    headers = request.headers
-    jwt = headers.get('authorization')
-
-    user = auth.verify_id_token(jwt)
-
-    return user
-
-
 @app.get('/userProfile/{user_id}')
 async def get_user_profile(user_id: str):
     try:
@@ -205,7 +194,7 @@ def upload_file(file):
         return f"Error: {str(e)}"
 
 
-#buat test upload GCS
+#test upload GCS
 @app.post('/upload')
 async def upload_image(photo: UploadFile = File(...)):
     file_path = upload_file(photo)
