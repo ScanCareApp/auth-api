@@ -18,7 +18,7 @@ This API manages user authentication and profile information storage using Fireb
    - [Authenticate to Secret Manager Locally](#authenticate-to-secret-manager-locally)
 4. [Running the Application Locally](#running-the-application-locally)
    - [Documentation and Testing](#documentation-and-testing)
-5. [Deploying the Application to Cloud Run](#deploying the Application to Cloud Run)
+5. [Deploying the Application to Cloud Run](#deploying-the-Application-to-Cloud-Run)
 
 ## Endpoint Description
 ### Create Account (`POST /signup`)
