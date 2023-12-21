@@ -1,6 +1,8 @@
 # Firebase Authentication & User Profile API
 This API manages user authentication and profile information storage using Firebase Authentication and Firestore. It facilitates secure authentication and storage of user profiles, allowing users to sign up, log in, edit their profiles, and retrieve profile details.
 
+## Acces Our Deployed API
+[auth-api](https://auth-api-lxntso327q-et.a.run.app/)
 
 ## Table Of Contents
 
@@ -318,3 +320,6 @@ gcloud projects add-iam-policy-binding YOUR_PROJECT_ID --member=serviceAccount:$
 
 gcloud projects add-iam-policy-binding YOUR_PROJECT_ID --member=serviceAccount:${SERVICE_ACCOUNT} --role=roles/cloudsql.client
 ```
+## Developer
+- [Ni Putu Adnya Puspita Dewi](https://github.com/adnyaaa)
+- [Tsania Magistra Rahma Insani](https://github.com/tsaniamagistra)
